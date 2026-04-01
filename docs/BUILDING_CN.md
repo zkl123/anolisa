@@ -9,7 +9,7 @@
 1. 快速开始：运行一个脚本自动检查/安装依赖并构建选定组件。
 2. 分组件构建：手动逐一构建各模块。
 
-## 仓库结构
+## 1. 仓库结构
 
 ```text
 anolisa/
@@ -27,7 +27,7 @@ anolisa/
 └── docs/
 ```
 
-## 环境依赖
+## 2. 环境依赖
 
 | 组件 | 所需工具 |
 |------|----------|
@@ -37,7 +37,7 @@ anolisa/
 | agentsight *（可选）* | Rust >= 1.80、clang >= 14、libbpf 头文件、内核头文件（仅 Linux） |
 | RPM 打包 | rpmbuild（仅 Linux） |
 
-## 快速开始
+## 3. 快速开始
 
 统一构建脚本可自动完成依赖安装、构建和系统安装。
 
@@ -65,9 +65,9 @@ cd anolisa
 ./scripts/build-all.sh --install-deps --install --component cosh --component skills --component sec-core --component sight
 ```
 
-> **提示：** 以上每个方式都是独立的命令，根据自己的需求选择一个执行即可。如果使用了统一构建脚本，可以跳过下方的[分组件构建](#分组件构建)部分。
+> **提示：** 以上每个方式都是独立的命令，根据自己的需求选择一个执行即可。如果使用了统一构建脚本，可以跳过下方的[分组件构建](#4-分组件构建)部分。
 
-### 脚本选项
+### 3.1 脚本选项
 
 | 参数 | 说明 |
 |------|------|
@@ -77,7 +77,7 @@ cd anolisa
 | --component <名称> | 构建指定组件（可重复使用）：cosh、skills、sec-core、sight。默认：cosh、skills、sec-core |
 | --help | 显示帮助信息 |
 
-### 注意事项
+### 3.2 注意事项
 
 1. Node.js 和 Rust 建议通过上游安装器（nvm / rustup）安装，而非使用发行版软件包。
 2. os-skills 大部分是静态资源，无需编译。
@@ -86,15 +86,15 @@ cd anolisa
 
 ---
 
-## 分组件构建
+## 4. 分组件构建
 
 > **如果已使用上方的统一构建脚本，可以跳过本节。** 脚本会自动完成依赖安装、构建和系统安装的所有步骤。
 
 如果你希望手动设置各工具链并逐个构建组件，请按以下四个步骤操作。
 
-### 步骤一：安装依赖
+### 4.1 安装依赖
 
-#### Node.js（用于 copilot-shell）
+#### a) Node.js（用于 copilot-shell）
 
 要求：Node.js >= 20、npm >= 10。
 
@@ -126,7 +126,7 @@ npm -v    # 期望：10.x.x 或更高
 ```
 ---
 
-#### Rust（用于 agent-sec-core 和 agentsight）
+#### b) Rust（用于 agent-sec-core 和 agentsight）
 
 要求：agent-sec-core 需要 Rust >= 1.91.0；agentsight 需要 Rust >= 1.80。
 
@@ -165,7 +165,7 @@ cargo --version   # 期望：cargo 1.91.0 或更高
 
 ---
 
-#### Python 和 uv（用于 agent-sec-core 和 os-skills）
+#### c) Python 和 uv（用于 agent-sec-core 和 os-skills）
 
 要求：Python >= 3.12。
 
@@ -208,7 +208,7 @@ uv python find 3.12   # 期望：输出 python3.12 可执行文件路径
 
 ---
 
-#### AgentSight 系统依赖（可选，需包管理器）
+#### d) AgentSight 系统依赖（可选，需包管理器）
 
 AgentSight 是**可选组件**，提供基于 eBPF 的审计和可观测性能力。它不是 ANOLISA 核心功能所必需的。如果你选择构建它，需要以下系统级依赖：
 
@@ -234,7 +234,7 @@ AgentSight 要求 Linux 内核 >= 5.10 且启用 BTF（`CONFIG_DEBUG_INFO_BTF=y`
 
 ---
 
-#### 版本检查
+#### e) 版本检查
 
 ```bash
 node -v            # v20.x.x
@@ -248,9 +248,9 @@ clang --version    # clang version 14+
 
 ---
 
-### 步骤二：构建组件
+### 4.2 构建组件
 
-#### copilot-shell
+#### a) copilot-shell
 
 ```bash
 cd src/copilot-shell
@@ -263,7 +263,7 @@ npm run bundle
 
 - dist/cli.js
 
-#### 运行
+**运行**
 
 ```bash
 # 从构建目录直接运行
@@ -275,11 +275,11 @@ source "$HOME/.$(basename "$SHELL")rc"
 co
 ```
 
-#### os-skills
+#### b) os-skills
 
 无需编译。每个技能是一个目录，包含 `SKILL.md` 及可选的辅助文件（脚本、参考资料等）。部署时会将整个技能目录复制到目标路径。
 
-#### 安装
+**安装**
 
 Copilot Shell 从以下三个搜索路径发现技能：
 
@@ -301,14 +301,14 @@ find src/os-skills -name 'SKILL.md' -exec sh -c \
 	'cp -rp "$(dirname "$1")" ~/.copilot/skills/' _ {} \;
 ```
 
-#### 验证
+**验证**
 
 ```bash
 # Copilot Shell 列出已发现的技能
 co /skills
 ```
 
-#### agent-sec-core（仅 Linux）
+#### c) agent-sec-core（仅 Linux）
 
 ```bash
 cd src/agent-sec-core
@@ -319,13 +319,13 @@ make build-sandbox
 
 - linux-sandbox/target/release/linux-sandbox
 
-#### 安装
+**安装**
 
 ```bash
 sudo make install
 ```
 
-#### agentsight（可选，仅 Linux）
+#### d) agentsight（可选，仅 Linux）
 
 > **注意：** AgentSight 是可选组件，提供基于 eBPF 的审计和可观测性能力，不是 ANOLISA 核心功能所必需的。
 
@@ -338,15 +338,15 @@ make build
 
 - target/release/agentsight
 
-#### 安装
+**安装**
 
 ```bash
 sudo make install
 ```
 
-### 步骤三：运行测试（推荐）
+### 4.3 运行测试（推荐）
 
-#### 统一入口
+#### a) 统一入口
 
 ```bash
 ./tests/run-all-tests.sh
@@ -355,7 +355,7 @@ sudo make install
 ./tests/run-all-tests.sh --filter sight
 ```
 
-#### 分组件测试
+#### b) 分组件测试
 
 ```bash
 # copilot-shell
@@ -371,9 +371,9 @@ cd src/agentsight && cargo test
 
 ---
 
-## 常见问题排查
+## 5. 常见问题排查
 
-### Node.js 版本不匹配
+### 5.1 Node.js 版本不匹配
 
 使用 nvm 重新激活期望版本：
 
@@ -381,17 +381,17 @@ cd src/agentsight && cargo test
 source "$HOME/.$(basename "$SHELL")rc"
 ```
 
-### Rust 工具链不匹配
+### 5.2 Rust 工具链不匹配
 
 ```bash
 rustup show
 ```
 
-### AgentSight 缺少 libbpf / 头文件
+### 5.3 AgentSight 缺少 libbpf / 头文件
 
 按上方 AgentSight 依赖章节安装发行版软件包。
 
-### AgentSight 运行时权限被拒绝
+### 5.4 AgentSight 运行时权限被拒绝
 
 ```bash
 sudo ./target/release/agentsight --help
