@@ -67,6 +67,7 @@ Approval modes: `plan` (read-only), `default` (manual approval), `auto-edit` (au
 | `/auth` | Change authentication | `/auth` |
 | `/copy` | Copy last output to clipboard | `/copy` |
 | `/quit` | Exit Copilot Shell | `/quit` or `/exit` |
+| `/bash` | Exit Copilot Shell to bash | `/bash` |
 
 ---
 
