@@ -34,7 +34,8 @@ use crate::probes::{Probes, ProbesPoller};
 use crate::storage::{
     SqliteConfig, Storage, StorageBackend, TimePeriod, TokenQuery, TokenQueryResult,
 };
-use crate::tokenizer::{create_tokenizer_from_file, create_tokenizer_from_url, ChatTemplateType};
+use crate::storage::sqlite::GenAISqliteStore;
+use crate::tokenizer::LlmTokenizer;
 
 /// Main AgentSight struct for tracing AI agent activity
 ///
@@ -121,7 +122,7 @@ impl AgentSight {
         // Always add local JSONL exporter
         genai_exporters.push(Box::new(GenAIStore::new(&GenAIStore::default_path())));
 
-        // Add SLS exporter if configured
+        // Add SLS exporter if configured, otherwise fallback to SQLite
         if config.sls_enabled() {
             match SlsUploader::new(&config) {
                 Ok(uploader) => {
@@ -132,19 +133,35 @@ impl AgentSight {
                     log::warn!("Failed to initialize SLS exporter: {}", e);
                 }
             }
+        } else {
+            // No SLS credentials configured, use SQLite as local storage
+            match GenAISqliteStore::new() {
+                Ok(store) => {
+                    log::info!("SQLite GenAI exporter enabled (SLS not configured)");
+                    genai_exporters.push(Box::new(store));
+                }
+                Err(e) => {
+                    log::warn!("Failed to initialize SQLite GenAI exporter: {}", e);
+                }
+            }
         }
 
         // Create analyzer with tokenizer if configured
         let analyzer = if let Some(ref tokenizer_path) = config.tokenizer_path {
             if Path::new(tokenizer_path).exists() {
-                match create_tokenizer_from_file(tokenizer_path) {
+                // Assume tokenizer_config.json is in the same directory
+                let config_path = Path::new(tokenizer_path)
+                    .parent()
+                    .map(|p| p.join("tokenizer_config.json"))
+                    .unwrap_or_else(|| Path::new("tokenizer_config.json").to_path_buf());
+                
+                match LlmTokenizer::from_file(tokenizer_path, &config_path) {
                     Ok(tokenizer) => {
-                        let chat_template = ChatTemplateType::Qwen.create_template();
                         log::info!(
-                            "Tokenizer loaded from: {:?}, using Qwen chat template",
+                            "Tokenizer loaded from: {:?}",
                             tokenizer_path
                         );
-                        Analyzer::with_tokenizer(tokenizer, chat_template)
+                        Analyzer::with_tokenizer(tokenizer.clone(), tokenizer)
                     }
                     Err(e) => {
                         log::warn!("Failed to load tokenizer from {:?}: {}. Using analyzer without tokenizer.", tokenizer_path, e);
@@ -155,23 +172,7 @@ impl AgentSight {
                 log::warn!("Tokenizer file not found: {:?}. Using analyzer without tokenizer.", tokenizer_path);
                 Analyzer::new()
             }
-        } else if let Some(ref tokenizer_url) = config.tokenizer_url {
-            match create_tokenizer_from_url(tokenizer_url, "qwen") {
-                Ok(tokenizer) => {
-                    let chat_template = ChatTemplateType::Qwen.create_template();
-                    log::info!(
-                        "Tokenizer loaded from URL: {}, using Qwen chat template",
-                        tokenizer_url
-                    );
-                    Analyzer::with_tokenizer(tokenizer, chat_template)
-                }
-                Err(e) => {
-                    log::warn!("Failed to load tokenizer from URL {}: {}. Using analyzer without tokenizer.", tokenizer_url, e);
-                    Analyzer::new()
-                }
-            }
         } else {
-            log::debug!("No tokenizer configured. Using analyzer without tokenizer.");
             Analyzer::new()
         };
 

@@ -198,8 +198,10 @@ export default {
   // ============================================================================
   // Agents - Creation Wizard
   // ============================================================================
-  'Project Level (.copilot/agents/)': 'Project Level (.copilot/agents/)',
-  'User Level (~/.copilot/agents/)': 'User Level (~/.copilot/agents/)',
+  'Project Level (.copilot-shell/agents/)':
+    'Project Level (.copilot-shell/agents/)',
+  'User Level (~/.copilot-shell/agents/)':
+    'User Level (~/.copilot-shell/agents/)',
   '✅ Subagent Created Successfully!': '✅ Subagent Created Successfully!',
   'Subagent "{{name}}" has been saved to {{level}} level.':
     'Subagent "{{name}}" has been saved to {{level}} level.',
@@ -373,6 +375,26 @@ export default {
     'Add directories to the workspace. Use comma to separate multiple paths',
   'Show all directories in the workspace':
     'Show all directories in the workspace',
+  'Switch the working directory for the current session':
+    'Switch the working directory for the current session',
+  'Please provide a path to switch to. Usage: /dir cd <path>':
+    'Please provide a path to switch to. Usage: /dir cd <path>',
+  'Directory "{{path}}" does not exist.':
+    'Directory "{{path}}" does not exist.',
+  'Failed to change directory to "{{path}}": {{error}}':
+    'Failed to change directory to "{{path}}": {{error}}',
+  'Switched working directory to: {{path}}':
+    'Switched working directory to: {{path}}',
+  'You are running Copilot Shell in your home directory. It is recommended to run in a project-specific directory. Use "/dir cd <path>" to switch to a project directory.':
+    'You are running Copilot Shell in your home directory. It is recommended to run in a project-specific directory. Use "/dir cd <path>" to switch to a project directory.',
+  'Warning: You are running Copilot Shell in the root directory. Your entire folder structure will be used for context. It is strongly recommended to run in a project-specific directory.':
+    'Warning: You are running Copilot Shell in the root directory. Your entire folder structure will be used for context. It is strongly recommended to run in a project-specific directory.',
+  'Could not verify the current directory due to a file system error.':
+    'Could not verify the current directory due to a file system error.',
+  'Ripgrep not available: Please install ripgrep globally to enable faster file content search. Falling back to built-in grep.':
+    'Ripgrep not available: Please install ripgrep globally to enable faster file content search. Falling back to built-in grep.',
+  'Ripgrep not available: {{message}}. Falling back to built-in grep.':
+    'Ripgrep not available: {{message}}. Falling back to built-in grep.',
   'set external editor preference': 'set external editor preference',
   'Select Editor': 'Select Editor',
   'Editor Preference': 'Editor Preference',
@@ -778,8 +800,8 @@ export default {
   // ============================================================================
   // Commands - Summary
   // ============================================================================
-  'Generate a project summary and save it to .copilot/PROJECT_SUMMARY.md':
-    'Generate a project summary and save it to .copilot/PROJECT_SUMMARY.md',
+  'Generate a project summary and save it to .copilot-shell/PROJECT_SUMMARY.md':
+    'Generate a project summary and save it to .copilot-shell/PROJECT_SUMMARY.md',
   'No chat client available to generate summary.':
     'No chat client available to generate summary.',
   'Already generating summary, wait for previous request to complete':
@@ -1424,10 +1446,4 @@ export default {
   'Press Ctrl+C to exit, then type exit to return to the original session.':
     'Press Ctrl+C to exit, then type exit to return to the original session.',
   'Press Enter to start a new session.': 'Press Enter to start a new session.',
-  // OpenClaw configuration reuse
-  'OpenClaw configuration detected': 'OpenClaw configuration detected',
-  'The following configuration from OpenClaw will be imported':
-    'The following configuration from OpenClaw will be imported',
-  'Press Y to authorize import, N to configure manually':
-    'Press Y to authorize import, N to configure manually',
 };

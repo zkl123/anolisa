@@ -38,6 +38,9 @@ pub mod chrome_trace;
 pub mod discovery;
 pub mod tokenizer;
 pub mod genai;
+#[cfg(feature = "server")]
+pub mod server;
+pub mod token_breakdown;
 mod unified;
 pub mod ffi;
 
@@ -84,13 +87,6 @@ pub use unified::{AgentSight, ProcessResult};
 // Re-export discovery types
 pub use discovery::{AgentInfo, AgentMatcher, AgentScanner, DiscoveredAgent, ProcessContext, known_agents};
 
-// Re-export tokenizer types
-pub use tokenizer::{
-    Tokenizer, TokenizerModel, QwenTokenizer, TokenizerRegistry, TokenCountBreakdown,
-    create_tokenizer, create_tokenizer_from_file, create_tokenizer_from_url,
-    create_tokenizer_registry, create_tokenizer_registry_from_file, create_tokenizer_registry_multi,
-    ChatTemplate, ChatTemplateType, ChatTokenCount, QwenChatTemplate, count_chat_tokens,
-};
 
 // Re-export genai types
 pub use genai::{
