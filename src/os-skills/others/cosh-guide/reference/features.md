@@ -333,7 +333,7 @@ Stored at `~/.copilot-shell/output-language.md`. Restart required after change.
 Create files in `~/.copilot-shell/locales/`:
 
 ```javascript
-// ~/.coplit/locales/es.js
+// ~/.coplit-shell/locales/es.js
 export default {
   Hello: 'Hola',
   Settings: 'Configuracion',

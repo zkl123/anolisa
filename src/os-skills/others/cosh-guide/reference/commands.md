@@ -77,7 +77,6 @@ Approval modes: `plan` (read-only), `default` (manual approval), `auto-edit` (au
 |---|---|---|
 | `@<file path>` | Inject file content | `@src/main.py Please explain this` |
 | `@<directory>` | Read all text files recursively | `@docs/ Summarize this` |
-| `@server: resource` | Reference MCP resources | `@github: repos/owner/repo/issues` |
 
 Notes:
 - Spaces in paths need backslash escaping: `@My\ Documents/file.txt`
@@ -130,7 +129,6 @@ Use {{args}} for parameter injection.
 |---|---|---|
 | File Content | `@{file path}` | Inject static reference files |
 | Shell Commands | `!{command}` | Inject execution results (requires confirmation) |
-| Parameters | `{{args}}` | Inject user parameters |
 
 ### Example: Git Commit Command
 
@@ -174,12 +172,12 @@ Please generate a Commit message based on the following diff:
 | Up/Down Arrow | Navigate input history |
 | `Ctrl+R` | Reverse search history |
 | `Ctrl+V` | Paste clipboard (supports images) |
-| `Ctrl+X` / `Meta+Enter` | Open in external editor |
-| `Ctrl+A` / `Home` | Beginning of line |
-| `Ctrl+E` / `End` | End of line |
+| `Ctrl+X` | Open in external editor |
+| `Ctrl+A` | Beginning of line |
+| `Ctrl+E` | End of line |
 | `Ctrl+K` | Delete to end of line |
 | `Ctrl+U` | Delete to beginning of line |
-| `Ctrl+W` | Delete word left |
+| `Ctrl+Backspace` | Delete word left |
 
 ### IDE Integration
 

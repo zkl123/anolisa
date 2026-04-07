@@ -55,7 +55,6 @@
 | Setting | Type | Default | Description |
 |---|---|---|---|
 | `tools.approvalMode` | string | "default" | Default approval mode |
-| `tools.sandbox` | bool/string | undefined | Sandbox execution |
 | `tools.core` | array | undefined | Allowlist of built-in tools |
 | `tools.exclude` | array | undefined | Tools to exclude |
 | `tools.allowed` | array | undefined | Tools bypassing confirmation |
@@ -67,7 +66,6 @@
 | `context.fileName` | string/array | undefined | Context file name(s) |
 | `context.includeDirectories` | array | [] | Extra directories |
 | `context.fileFiltering.respectGitIgnore` | boolean | true | Respect .gitignore |
-| `context.fileFiltering.respectQwenIgnore` | boolean | true | Respect .copilotignore |
 
 #### privacy
 
@@ -187,7 +185,6 @@ Security feature controlling which projects can use full COSH capabilities.
 
 ### Manage
 
-- `/permissions` command to change current folder trust
 - View all rules: `~/.copilot-shell/trustedFolders.json`
 
 ---
