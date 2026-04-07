@@ -5,8 +5,8 @@
 | Level | Source | Description |
 |---|---|---|
 | 1 | Default values | Hardcoded defaults |
-| 2 | User settings | `~/.copilot/settings.json` |
-| 3 | Project settings | `.copilot/settings.json` |
+| 2 | User settings | `~/.copilot-shell/settings.json` |
+| 3 | Project settings | `.copilot-shell/settings.json` |
 
 ---
 
@@ -179,7 +179,7 @@ Security feature controlling which projects can use full COSH capabilities.
 
 ### Untrusted Restrictions
 
-1. Project `.copilot/settings.json` ignored
+1. Project `.copilot-shell/settings.json` ignored
 2. Project `.env` files ignored
 3. Extension management restricted
 4. Tool auto-acceptance disabled
@@ -188,7 +188,7 @@ Security feature controlling which projects can use full COSH capabilities.
 ### Manage
 
 - `/permissions` command to change current folder trust
-- View all rules: `~/.copilot/trustedFolders.json`
+- View all rules: `~/.copilot-shell/trustedFolders.json`
 
 ---
 
@@ -198,7 +198,7 @@ Hierarchical instructional context for the AI.
 
 ### Loading Order
 
-1. `~/.copilot/COPILOT.md` (global)
+1. `~/.copilot-shell/COPILOT.md` (global)
 2. Project root and parent directories (project-specific)
 
 ### Commands

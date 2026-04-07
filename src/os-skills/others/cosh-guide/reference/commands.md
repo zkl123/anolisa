@@ -20,7 +20,6 @@ Copilot Shell commands use three prefixes:
 | `/summary` | Generate project summary from conversation | `/summary` |
 | `/compress` | Replace chat history with summary to save tokens | `/compress` |
 | `/resume` | Resume a previous conversation session | `/resume` |
-| `/restore` | Restore files to state before tool execution | `/restore` or `/restore <ID>` |
 
 ### 1.2 Interface and Workspace Control
 
@@ -66,7 +65,6 @@ Approval modes: `plan` (read-only), `default` (manual approval), `auto-edit` (au
 | `/stats` | Session statistics | `/stats` |
 | `/settings` | Open settings editor | `/settings` |
 | `/auth` | Change authentication | `/auth` |
-| `/bug` | Submit issue | `/bug Button unresponsive` |
 | `/copy` | Copy last output to clipboard | `/copy` |
 | `/quit` | Exit Copilot Shell | `/quit` or `/exit` |
 
@@ -105,14 +103,14 @@ Save frequently used prompts as shortcut commands.
 
 | Type | Location | Priority |
 |---|---|---|
-| Global | `~/.copilot/commands/` | Low |
-| Project | `<project>/.copilot/commands/` | High (overrides global) |
+| Global | `~/.copilot-shell/commands/` | Low |
+| Project | `<project>/.copilot-shell/commands/` | High (overrides global) |
 
 ### Naming
 
 File path maps to command name:
-- `~/.copilot/commands/test.md` -> `/test`
-- `<project>/.copilot/commands/git/commit.md` -> `/git:commit`
+- `~/.copilot-shell/commands/test.md` -> `/test`
+- `<project>/.copilot-shell/commands/git/commit.md` -> `/git:commit`
 
 ### Markdown Format (Recommended)
 

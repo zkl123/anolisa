@@ -122,8 +122,8 @@ co mcp remove my-server
 
 ### Scopes
 
-- **Project** (default): `.copilot/settings.json`
-- **User**: `~/.copilot/settings.json` (use `--scope user`)
+- **Project** (default): `.copilot-shell/settings.json`
+- **User**: `~/.copilot-shell/settings.json` (use `--scope user`)
 
 ### Safety
 
@@ -140,8 +140,8 @@ Modular capabilities extending Cosh.
 
 Skills are directories containing `SKILL.md`:
 
-- **Personal**: `~/.copilot/skills/<skill-name>/SKILL.md`
-- **Project**: `.copilot/skills/<skill-name>/SKILL.md`
+- **Personal**: `~/.copilot-shell/skills/<skill-name>/SKILL.md`
+- **Project**: `.copilot-shell/skills/<skill-name>/SKILL.md`
 
 ```yaml
 ---
@@ -191,8 +191,8 @@ Specialized AI assistants for specific task types.
 
 ### Storage
 
-- **Project**: `.copilot/agents/` (highest precedence)
-- **User**: `~/.copilot/agents/`
+- **Project**: `.copilot-shell/agents/` (highest precedence)
+- **User**: `~/.copilot-shell/agents/`
 - **Extension**: Provided by installed extensions
 
 ### Configuration Format
@@ -243,7 +243,7 @@ Or in `settings.json`:
 ### How It Works
 
 Before file modifications, creates:
-1. Git snapshot in shadow repository (`~/.copilot/history/<project_hash>`)
+1. Git snapshot in shadow repository (`~/.copilot-shell/history/<project_hash>`)
 2. Conversation history backup
 3. Tool call record
 
@@ -330,11 +330,11 @@ Auto-detection priority: `QWEN_CODE_LANG` env -> `LANG` env -> System locale -> 
 /language output English
 ```
 
-Stored at `~/.copilot/output-language.md`. Restart required after change.
+Stored at `~/.copilot-shell/output-language.md`. Restart required after change.
 
 ### Custom Language Packs
 
-Create files in `~/.copilot/locales/`:
+Create files in `~/.copilot-shell/locales/`:
 
 ```javascript
 // ~/.coplit/locales/es.js
