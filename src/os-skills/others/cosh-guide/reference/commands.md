@@ -28,7 +28,7 @@ Copilot Shell commands use three prefixes:
 | `/clear` | Clear terminal screen | `/clear` (Ctrl+L) |
 | `/theme` | Change visual theme | `/theme` |
 | `/vim` | Toggle Vim editing mode | `/vim` |
-| `/directory` | Manage multi-directory workspace | `/dir add ./src,./tests` |
+| `/directory` | Manage multi-directory workspace | `/dir add ./src,./tests`, `/dir cd ./src` |
 | `/editor` | Select supported editor | `/editor` |
 
 ### 1.3 Language Settings
@@ -49,7 +49,7 @@ Aliases: `zh`, `en`
 | `/mcp` | List configured MCP servers/tools | `/mcp`, `/mcp desc` |
 | `/tools` | Display available tool list | `/tools`, `/tools desc` |
 | `/skills` | List/run available skills (experimental) | `/skills`, `/skills <name>` |
-| `/approval-mode` | Change approval mode | `/approval-mode <mode> --project` |
+| `/approval-mode` | Change approval mode | `/approval-mode <mode>` |
 | `/model` | Switch model in current session | `/model` |
 | `/extensions` | List active extensions | `/extensions` |
 | `/memory` | Manage AI instruction context | `/memory add --project/--global Important Info` |
