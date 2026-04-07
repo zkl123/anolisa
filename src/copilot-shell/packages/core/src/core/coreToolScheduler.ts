@@ -51,6 +51,12 @@ import { doesToolInvocationMatch } from '../utils/tool-utils.js';
 import levenshtein from 'fast-levenshtein';
 import { getPlanModeSystemReminder } from './prompts.js';
 import { ShellToolInvocation } from '../tools/shell.js';
+import {
+  redactSecrets,
+  redactPartListUnion,
+  redactAnsiOutput,
+} from '../utils/secretRedactor.js';
+import type { FileDiff } from '../tools/tools.js';
 
 export type ValidatingToolCall = {
   status: 'validating';
@@ -1207,6 +1213,36 @@ export class CoreToolScheduler {
 
         try {
           const toolResult: ToolResult = await promise;
+
+          // Redact secrets from tool result before further processing
+          toolResult.llmContent = redactPartListUnion(toolResult.llmContent);
+          if (typeof toolResult.returnDisplay === 'string') {
+            toolResult.returnDisplay = redactSecrets(toolResult.returnDisplay);
+          } else if (
+            toolResult.returnDisplay &&
+            typeof toolResult.returnDisplay === 'object' &&
+            'ansiOutput' in toolResult.returnDisplay
+          ) {
+            const ansiDisplay = toolResult.returnDisplay as {
+              ansiOutput: import('../utils/terminalSerializer.js').AnsiOutput;
+            };
+            ansiDisplay.ansiOutput = redactAnsiOutput(ansiDisplay.ansiOutput);
+          } else if (
+            toolResult.returnDisplay &&
+            typeof toolResult.returnDisplay === 'object' &&
+            'fileDiff' in toolResult.returnDisplay
+          ) {
+            // Redact secrets from FileDiff display (WriteFile / EditFile results)
+            const diffDisplay = toolResult.returnDisplay as FileDiff;
+            diffDisplay.fileDiff = redactSecrets(diffDisplay.fileDiff);
+            diffDisplay.newContent = redactSecrets(diffDisplay.newContent);
+            if (diffDisplay.originalContent !== null) {
+              diffDisplay.originalContent = redactSecrets(
+                diffDisplay.originalContent,
+              );
+            }
+          }
+
           if (signal.aborted) {
             this.setStatusInternal(
               callId,
