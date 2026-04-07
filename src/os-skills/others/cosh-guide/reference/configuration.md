@@ -67,7 +67,7 @@
 | `context.fileName` | string/array | undefined | Context file name(s) |
 | `context.includeDirectories` | array | [] | Extra directories |
 | `context.fileFiltering.respectGitIgnore` | boolean | true | Respect .gitignore |
-| `context.fileFiltering.respectQwenIgnore` | boolean | true | Respect .qwenignore |
+| `context.fileFiltering.respectQwenIgnore` | boolean | true | Respect .copilotignore |
 
 #### privacy
 
@@ -137,11 +137,11 @@ Load from file: `"ui": { "theme": "/path/to/theme.json" }`
 
 ---
 
-## .qwenignore
+## .copilotignore
 
 Exclude files from Copilot Shell tools (similar to `.gitignore`).
 
-Create `.qwenignore` in project root:
+Create `.copilotignore` in project root:
 
 ```
 # Exclude directories
