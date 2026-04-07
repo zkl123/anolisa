@@ -195,8 +195,8 @@ export default {
   // ============================================================================
   // Agents - Creation Wizard
   // ============================================================================
-  'Project Level (.copilot/agents/)': '项目级 (.copilot/agents/)',
-  'User Level (~/.copilot/agents/)': '用户级 (~/.copilot/agents/)',
+  'Project Level (.copilot-shell/agents/)': '项目级 (.copilot-shell/agents/)',
+  'User Level (~/.copilot-shell/agents/)': '用户级 (~/.copilot-shell/agents/)',
   '✅ Subagent Created Successfully!': '✅ 子代理创建成功！',
   'Subagent "{{name}}" has been saved to {{level}} level.':
     '子代理 "{{name}}" 已保存到 {{level}} 级别。',
@@ -360,6 +360,24 @@ export default {
   'Add directories to the workspace. Use comma to separate multiple paths':
     '将目录添加到工作区。使用逗号分隔多个路径',
   'Show all directories in the workspace': '显示工作区中的所有目录',
+  'Switch the working directory for the current session':
+    '切换当前会话的工作目录',
+  'Please provide a path to switch to. Usage: /dir cd <path>':
+    '请提供要切换的路径。用法：/dir cd <路径>',
+  'Directory "{{path}}" does not exist.': '目录 "{{path}}" 不存在。',
+  'Failed to change directory to "{{path}}": {{error}}':
+    '切换到目录 "{{path}}" 失败：{{error}}',
+  'Switched working directory to: {{path}}': '已切换工作目录到：{{path}}',
+  'You are running Copilot Shell in your home directory. It is recommended to run in a project-specific directory. Use "/dir cd <path>" to switch to a project directory.':
+    '您正在主目录中运行 Copilot Shell。建议在特定项目目录中运行。使用 "/dir cd <路径>" 切换到项目目录。',
+  'Warning: You are running Copilot Shell in the root directory. Your entire folder structure will be used for context. It is strongly recommended to run in a project-specific directory.':
+    '警告：您正在根目录中运行 Copilot Shell。整个目录结构将作为上下文使用。强烈建议在特定项目目录中运行。',
+  'Could not verify the current directory due to a file system error.':
+    '由于文件系统错误，无法验证当前目录。',
+  'Ripgrep not available: Please install ripgrep globally to enable faster file content search. Falling back to built-in grep.':
+    'Ripgrep 不可用：请全局安装 ripgrep 以启用更快的文件内容搜索。回退到内置 grep。',
+  'Ripgrep not available: {{message}}. Falling back to built-in grep.':
+    'Ripgrep 不可用：{{message}}。回退到内置 grep。',
   'set external editor preference': '设置外部编辑器首选项',
   'Select Editor': '选择编辑器',
   'Editor Preference': '编辑器首选项',
@@ -736,8 +754,8 @@ export default {
   // ============================================================================
   // Commands - Summary
   // ============================================================================
-  'Generate a project summary and save it to .copilot/PROJECT_SUMMARY.md':
-    '生成项目摘要并保存到 .copilot/PROJECT_SUMMARY.md',
+  'Generate a project summary and save it to .copilot-shell/PROJECT_SUMMARY.md':
+    '生成项目摘要并保存到 .copilot-shell/PROJECT_SUMMARY.md',
   'No chat client available to generate summary.':
     '没有可用的聊天客户端来生成摘要',
   'Already generating summary, wait for previous request to complete':
@@ -1263,10 +1281,4 @@ export default {
   'Press Ctrl+C to exit, then type exit to return to the original session.':
     '按 Ctrl+C 退出，然后输入 exit 返回原始会话。',
   'Press Enter to start a new session.': '按 Enter 启动新会话。',
-  // OpenClaw 配置复用
-  'OpenClaw configuration detected': '检测到 OpenClaw 配置',
-  'The following configuration from OpenClaw will be imported':
-    '将导入以下来自 OpenClaw 的配置',
-  'Press Y to authorize import, N to configure manually':
-    '按 Y 授权导入，按 N 手动配置',
 };
