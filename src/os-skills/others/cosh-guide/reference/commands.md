@@ -39,8 +39,8 @@ Copilot Shell commands use three prefixes:
 | `/language ui [lang]` | Set UI language | `/language ui zh-CN` |
 | `/language output [lang]` | Set LLM output language | `/language output Chinese` |
 
-Built-in UI languages: `zh-CN`, `en-US`, `ru-RU`, `de-DE`, `ja-JP`
-Aliases: `zh`, `en`, `ru`, `de`, `ja`
+Built-in UI languages: `zh-CN`, `en-US`
+Aliases: `zh`, `en`
 
 ### 1.4 Tool and Model Management
 
@@ -52,7 +52,7 @@ Aliases: `zh`, `en`, `ru`, `de`, `ja`
 | `/approval-mode` | Change approval mode | `/approval-mode <mode> --project` |
 | `/model` | Switch model in current session | `/model` |
 | `/extensions` | List active extensions | `/extensions` |
-| `/memory` | Manage AI instruction context | `/memory add Important Info` |
+| `/memory` | Manage AI instruction context | `/memory add --project/--global Important Info` |
 
 Approval modes: `plan` (read-only), `default` (manual approval), `auto-edit` (auto-approve edits), `yolo` (auto-approve all)
 

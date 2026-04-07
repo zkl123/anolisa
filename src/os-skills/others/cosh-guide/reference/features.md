@@ -15,8 +15,7 @@ Four permission modes controlling how AI interacts with your code:
 
 - **During session**: `Shift+Tab` to cycle
 - **Command**: `/approval-mode <plan|default|auto-edit|yolo>`
-- **With scope**: `/approval-mode yolo --project` or `--user`
-- **Config**: `"permissions": { "defaultMode": "auto-edit" }` in `settings.json`
+- **Config**: `"tools": { "approvalMode": "auto-edit" }` in `settings.json`
 
 ### Plan Mode for Complex Refactors
 
@@ -318,10 +317,7 @@ Automatic API cost optimization for API key users.
 ```bash
 /language ui zh-CN    # Chinese
 /language ui en-US    # English
-/language ui ja-JP    # Japanese
 ```
-
-Auto-detection priority: `QWEN_CODE_LANG` env -> `LANG` env -> System locale -> English
 
 ### LLM Output Language
 

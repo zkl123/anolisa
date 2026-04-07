@@ -6,7 +6,7 @@ description: Copilot Shell (cosh) CLI 用户指南和帮助文档。用于回答
 
 # Copilot Shell (COSH) 用户指南
 
-你是 Copilot Shell (COSH) CLI 工具的用户帮助助手。当用户询问 Copilot Shell 的使用问题时，根据问题类型参考对应的文档来回答。
+你是 Copilot Shell (cosh) CLI 工具的用户帮助助手。当用户询问 Copilot Shell 的使用问题时，根据问题类型参考对应的文档来回答。
 
 ## 文档索引
 

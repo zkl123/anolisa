@@ -205,7 +205,7 @@ Hierarchical instructional context for the AI.
 
 - `/memory refresh` - Reload all context files
 - `/memory show` - Display current loaded context
-- `/memory add <text>` - Add to memory
+- `/memory add --project/--global <text>` - Add to memory
 
 ### Import Syntax
 
@@ -220,7 +220,6 @@ Use `@path/to/file.md` in context files to import other Markdown files.
 | `--model` | `-m` | Specify model |
 | `--prompt` | `-p` | Headless mode |
 | `--output-format` | `-o` | Output format |
-| `--sandbox` | `-s` | Enable sandbox |
 | `--debug` | `-d` | Debug mode |
 | `--all-files` | `-a` | Include all files |
 | `--yolo` | | Auto-approve all |
@@ -228,7 +227,6 @@ Use `@path/to/file.md` in context files to import other Markdown files.
 | `--continue` | | Resume recent session |
 | `--resume` | | Resume specific session |
 | `--include-directories` | | Add extra directories |
-| `--experimental-skills` | | Enable skills |
 | `--experimental-lsp` | | Enable LSP |
 | `--extensions` | `-e` | Specify extensions |
 | `--proxy` | | Set proxy |
@@ -243,7 +241,6 @@ Use `@path/to/file.md` in context files to import other Markdown files.
 | `OPENAI_API_KEY` | API key for OpenAI-compatible provider |
 | `OPENAI_BASE_URL` | Custom API base URL |
 | `OPENAI_MODEL` | Model to use |
-| `QWEN_CODE_LANG` | Override UI language detection |
 | `TAVILY_API_KEY` | Tavily web search API key |
 | `NO_COLOR` | Disable color output |
 | `DEBUG` / `DEBUG_MODE` | Enable debug logging |
