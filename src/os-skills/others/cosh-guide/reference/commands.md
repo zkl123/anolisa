@@ -1,10 +1,10 @@
 # Commands Reference
 
-Qwen Code commands use three prefixes:
+Copilot Shell commands use three prefixes:
 
 | Prefix | Function | Example |
 |---|---|---|
-| `/` (Slash) | Meta-level control of Qwen Code | `/help`, `/settings` |
+| `/` (Slash) | Meta-level control of Copilot Shell | `/help`, `/settings` |
 | `@` (At) | Inject local file content into conversation | `@src/main.py explain this` |
 | `!` (Exclamation) | Direct system shell interaction | `!git status`, `!ls` |
 
@@ -68,7 +68,7 @@ Approval modes: `plan` (read-only), `default` (manual approval), `auto-edit` (au
 | `/auth` | Change authentication | `/auth` |
 | `/bug` | Submit issue | `/bug Button unresponsive` |
 | `/copy` | Copy last output to clipboard | `/copy` |
-| `/quit` | Exit Qwen Code | `/quit` or `/exit` |
+| `/quit` | Exit Copilot Shell | `/quit` or `/exit` |
 
 ---
 
@@ -83,7 +83,7 @@ Approval modes: `plan` (read-only), `default` (manual approval), `auto-edit` (au
 Notes:
 - Spaces in paths need backslash escaping: `@My\ Documents/file.txt`
 - File paths can be relative or absolute
-- `@` file references auto-load `QWEN.md` from the file's directory and parents
+- `@` file references auto-load `COPILOT.md` from the file's directory and parents
 - Multiple files: `@file1.js and @file2.js`
 
 ---
@@ -95,8 +95,6 @@ Notes:
 | `!<command>` | Execute in sub-shell | `!ls -la`, `!git status` |
 | Standalone `!` | Toggle shell mode (all input as commands) | `!` (enter) -> commands -> `!` (exit) |
 
-Environment: Commands via `!` set `QWEN_CODE=1`.
-
 ---
 
 ## 4. Custom Commands
@@ -107,14 +105,14 @@ Save frequently used prompts as shortcut commands.
 
 | Type | Location | Priority |
 |---|---|---|
-| Global | `~/.qwen/commands/` | Low |
-| Project | `<project>/.qwen/commands/` | High (overrides global) |
+| Global | `~/.copilot/commands/` | Low |
+| Project | `<project>/.copilot/commands/` | High (overrides global) |
 
 ### Naming
 
 File path maps to command name:
-- `~/.qwen/commands/test.md` -> `/test`
-- `<project>/.qwen/commands/git/commit.md` -> `/git:commit`
+- `~/.copilot/commands/test.md` -> `/test`
+- `<project>/.copilot/commands/git/commit.md` -> `/git:commit`
 
 ### Markdown Format (Recommended)
 

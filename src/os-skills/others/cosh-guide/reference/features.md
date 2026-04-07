@@ -31,20 +31,20 @@ I need to refactor our auth system to use OAuth2. Create a detailed migration pl
 
 ## Headless Mode
 
-Run Qwen Code programmatically without interactive UI.
+Run Copilot Shell programmatically without interactive UI.
 
 ### Basic Usage
 
 ```bash
 # Direct prompt
-qwen --prompt "What is machine learning?"
-qwen -p "query"
+co --prompt "What is machine learning?"
+co -p "query"
 
 # Stdin input
-echo "Explain this code" | qwen
+echo "Explain this code" | co
 
 # File input
-cat README.md | qwen -p "Summarize this documentation"
+cat README.md | co -p "Summarize this documentation"
 ```
 
 ### Output Formats
@@ -58,8 +58,8 @@ cat README.md | qwen -p "Summarize this documentation"
 ### Resume Sessions
 
 ```bash
-qwen --continue -p "Run the tests again"
-qwen --resume <session-id> -p "Apply the refactor"
+co --continue -p "Run the tests again"
+co --resume <session-id> -p "Apply the refactor"
 ```
 
 ### Key Options
@@ -79,22 +79,22 @@ qwen --resume <session-id> -p "Apply the refactor"
 
 ## MCP (Model Context Protocol)
 
-Connect Qwen Code to external tools and data sources.
+Connect Copilot Shell to external tools and data sources.
 
 ### Quick Start
 
 ```bash
 # Add HTTP server
-qwen mcp add --transport http my-server http://localhost:3000/mcp
+co mcp add --transport http my-server http://localhost:3000/mcp
 
 # Add stdio server
-qwen mcp add pythonTools python -m my_mcp_server
+co mcp add pythonTools python -m my_mcp_server
 
 # List servers
-qwen mcp list
+co mcp list
 
 # Remove server
-qwen mcp remove my-server
+co mcp remove my-server
 ```
 
 ### Transport Types
@@ -232,7 +232,7 @@ Auto-saves project state before AI file modifications.
 ### Enable
 
 ```bash
-qwen --checkpointing
+co --checkpointing
 ```
 
 Or in `settings.json`:
@@ -243,7 +243,7 @@ Or in `settings.json`:
 ### How It Works
 
 Before file modifications, creates:
-1. Git snapshot in shadow repository (`~/.qwen/history/<project_hash>`)
+1. Git snapshot in shadow repository (`~/.copilot/history/<project_hash>`)
 2. Conversation history backup
 3. Tool call record
 
@@ -263,7 +263,7 @@ Code intelligence features via language servers.
 ### Enable
 
 ```bash
-qwen --experimental-lsp
+co --experimental-lsp
 ```
 
 ### Supported Languages
@@ -330,14 +330,14 @@ Auto-detection priority: `QWEN_CODE_LANG` env -> `LANG` env -> System locale -> 
 /language output English
 ```
 
-Stored at `~/.qwen/output-language.md`. Restart required after change.
+Stored at `~/.copilot/output-language.md`. Restart required after change.
 
 ### Custom Language Packs
 
-Create files in `~/.qwen/locales/`:
+Create files in `~/.copilot/locales/`:
 
 ```javascript
-// ~/.qwen/locales/es.js
+// ~/.coplit/locales/es.js
 export default {
   Hello: 'Hola',
   Settings: 'Configuracion',

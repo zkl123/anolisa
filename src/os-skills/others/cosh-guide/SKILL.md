@@ -20,7 +20,7 @@ description: Copilot Shell (cosh) CLI 用户指南和帮助文档。用于回答
 - 审批模式 (Plan/Default/Auto-Edit/YOLO)
 - Headless 模式 (非交互式/脚本化)
 - MCP (Model Context Protocol) 外部工具集成
-- Agent Skills (实验性扩展能力)
+- Agent Skills (扩展能力)
 - Subagents (子代理/专业化AI助手)
 - Checkpointing (检查点/状态恢复)
 - LSP (语言服务器协议，代码智能)
@@ -30,7 +30,7 @@ description: Copilot Shell (cosh) CLI 用户指南和帮助文档。用于回答
 
 ### 配置
 - settings.json 配置层级与选项
-- 认证 (OAuth / API Key)
+- 认证 (Qwen OAuth / 自定义提供商 / Aliyun AK/SK)
 - 主题设置与自定义
 - 可信文件夹
 - 命令行参数

@@ -84,7 +84,7 @@
   "tools": { "approvalMode": "auto-edit" },
   "model": { "name": "qwen3-coder-plus" },
   "context": {
-    "fileName": ["QWEN.md"],
+    "fileName": ["COPILOT.md"],
     "includeDirectories": ["path/to/dir1"]
   }
 }
@@ -139,7 +139,7 @@ Load from file: `"ui": { "theme": "/path/to/theme.json" }`
 
 ## .qwenignore
 
-Exclude files from Qwen Code tools (similar to `.gitignore`).
+Exclude files from Copilot Shell tools (similar to `.gitignore`).
 
 Create `.qwenignore` in project root:
 
@@ -163,7 +163,7 @@ Restart session after changes.
 
 ## Trusted Folders
 
-Security feature controlling which projects can use full Qwen Code capabilities.
+Security feature controlling which projects can use full COSH capabilities.
 
 ### Enable
 
@@ -179,7 +179,7 @@ Security feature controlling which projects can use full Qwen Code capabilities.
 
 ### Untrusted Restrictions
 
-1. Project `.qwen/settings.json` ignored
+1. Project `.copilot/settings.json` ignored
 2. Project `.env` files ignored
 3. Extension management restricted
 4. Tool auto-acceptance disabled
@@ -188,17 +188,17 @@ Security feature controlling which projects can use full Qwen Code capabilities.
 ### Manage
 
 - `/permissions` command to change current folder trust
-- View all rules: `~/.qwen/trustedFolders.json`
+- View all rules: `~/.copilot/trustedFolders.json`
 
 ---
 
-## Context Files (QWEN.md)
+## Context Files (COPILOT.md)
 
 Hierarchical instructional context for the AI.
 
 ### Loading Order
 
-1. `~/.qwen/QWEN.md` (global)
+1. `~/.copilot/COPILOT.md` (global)
 2. Project root and parent directories (project-specific)
 
 ### Commands
